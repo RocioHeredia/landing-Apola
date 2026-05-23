@@ -1,0 +1,122 @@
+---
+const base = import.meta.env.BASE_URL;
+const links = [
+  { href: `${base}#colecciones`,    label: 'Catálogo' },
+  { href: `${base}#sobre-nosotros`, label: 'Nosotros' },
+  { href: `${base}#contacto`,       label: 'Contacto' },
+];
+---
+
+<header id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:transparent;border-bottom:1px solid transparent;">
+
+  <!-- Barra principal -->
+  <div class="flex justify-between md:grid md:grid-cols-3 items-center h-16 md:h-20 px-5 md:px-16 max-w-[1280px] mx-auto">
+
+    <!-- APOLA -->
+    <div class="flex justify-start md:justify-center md:-translate-x-16">
+      <a href={base} aria-label="Apola San Juan - Inicio"
+         class="font-display text-xl md:text-2xl tracking-widest text-primary hover:opacity-60 transition-opacity duration-300">
+        APOLA
+      </a>
+    </div>
+
+    <!-- Links desktop -->
+    <nav class="hidden md:flex justify-center items-center gap-8" aria-label="Navegación principal">
+      {links.map(link => (
+        <a href={link.href}
+           class="font-body text-on-surface-variant hover:text-primary transition-colors duration-300 uppercase tracking-[0.05em] text-[14px]">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Instagram + Hamburger mobile -->
+    <div class="flex justify-end items-center gap-4">
+      <a href="https://www.instagram.com/apolasanjuan_/" target="_blank" rel="noopener noreferrer"
+         aria-label="Instagram de Apola San Juan"
+         class="hidden md:flex text-primary hover:opacity-60 transition-opacity duration-300 mr-2">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4.5"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
+              class="md:hidden text-primary p-2 focus:outline-none">
+        <svg id="icon-open"  width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <line x1="3" y1="6"  x2="19" y2="6"/>
+          <line x1="3" y1="11" x2="19" y2="11"/>
+          <line x1="3" y1="16" x2="14" y2="16"/>
+        </svg>
+        <svg id="icon-close" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="hidden">
+          <line x1="4" y1="4" x2="18" y2="18"/>
+          <line x1="18" y1="4" x2="4" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Menú mobile -->
+  <nav id="mobile-menu"
+       class="md:hidden overflow-hidden"
+       style="max-height:0; opacity:0; transition:max-height 0.4s ease, opacity 0.3s ease;"
+       aria-label="Menú mobile">
+    <ul class="flex flex-col gap-3 px-10 py-5">
+      {links.map(link => (
+        <li>
+          <a href={link.href}
+             class="font-body text-[13px] uppercase tracking-[0.14em] text-on-surface-variant hover:text-primary transition-colors duration-200 block py-4">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+</header>
+
+<script>
+  const toggle    = document.getElementById('menu-toggle');
+  const menu      = document.getElementById('mobile-menu');
+  const iconOpen  = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  let isOpen = false;
+
+  function openMenu() {
+    isOpen = true;
+    menu.style.maxHeight = menu.scrollHeight + 'px';
+    menu.style.opacity   = '1';
+    toggle.setAttribute('aria-expanded', 'true');
+    iconOpen.classList.add('hidden');
+    iconClose.classList.remove('hidden');
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    menu.style.maxHeight = '0';
+    menu.style.opacity   = '0';
+    toggle.setAttribute('aria-expanded', 'false');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+  }
+
+  toggle?.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Transparente → blanco al hacer scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.style.background   = 'rgba(249,247,245,0.97)';
+      nav.style.borderBottom = '1px solid rgba(38,38,38,0.08)';
+      nav.style.backdropFilter = 'blur(12px)';
+    } else {
+      nav.style.background   = 'transparent';
+      nav.style.borderBottom = '1px solid transparent';
+      nav.style.backdropFilter = 'none';
+    }
+  }, { passive: true });
+</script>

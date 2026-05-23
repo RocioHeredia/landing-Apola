@@ -1,0 +1,83 @@
+---
+const base = import.meta.env.BASE_URL;
+const instagramUrl = 'https://www.instagram.com/apolasanjuan_/';
+const whatsappUrl  = 'https://wa.me/542644672785';
+const year         = new Date().getFullYear();
+---
+
+<footer style="background:#d9c5b2; border-top:1px solid rgba(38,38,38,0.08)">
+
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-10 px-5 md:px-16 max-w-[1280px] mx-auto" style="padding-top:2.5rem; padding-bottom:2.5rem;">
+
+    <!-- Columna 1: Marca -->
+    <div class="col-span-2 md:col-span-1 flex flex-col items-center justify-center gap-4 text-center">
+      <span class="font-display text-2xl tracking-widest text-primary">APOLA</span>
+      <p class="font-body text-[14px] leading-[22px] text-on-surface-variant">
+        Indumentaria femenina de diseño.<br/>San Juan, Argentina.
+      </p>
+    </div>
+
+    <!-- Columna 2: Navegación -->
+    <div class="flex flex-col gap-3 items-center text-center">
+      <h4 class="font-body text-[11px] font-semibold uppercase tracking-widest text-primary mb-1">Navegación</h4>
+      {[
+        { href: `${base}#colecciones`,    label: 'Catálogo' },
+        { href: `${base}#sobre-nosotros`, label: 'Nosotros' },
+        { href: `${base}#contacto`,       label: 'Contacto' },
+      ].map(l => (
+        <a href={l.href} class="font-body text-[14px] text-on-surface-variant hover:text-primary transition-colors duration-200">
+          {l.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Columna 3: Sucursales -->
+    <div class="flex flex-col gap-3">
+      <h4 class="font-body text-[11px] font-semibold uppercase tracking-widest text-primary mb-1">Sucursales</h4>
+      {[
+        'Cabaña 19 — Local 3, Rivadavia Norte',
+        'Av. Libertador 1791, Santa Lucía',
+        'R. Calivar 413 — Local 4, Rivadavia Sur',
+      ].map(s => (
+        <p class="font-body text-[14px] text-on-surface-variant leading-snug">{s}</p>
+      ))}
+    </div>
+
+    <!-- Columna 4: Contacto -->
+    <div class="flex flex-col gap-3 items-center text-center">
+      <h4 class="font-body text-[11px] font-semibold uppercase tracking-widest text-primary mb-1">Contacto</h4>
+      <a href={instagramUrl} target="_blank" rel="noopener noreferrer"
+         class="font-body text-[14px] text-on-surface-variant hover:text-primary transition-colors duration-200">
+        Instagram
+      </a>
+      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
+         class="font-body text-[14px] text-on-surface-variant hover:text-primary transition-colors duration-200">
+        WhatsApp
+      </a>
+    </div>
+
+    <!-- Columna 5: Horarios -->
+    <div class="flex flex-col gap-3">
+      <h4 class="font-body text-[11px] font-semibold uppercase tracking-widest text-primary mb-1">Horarios</h4>
+      <div class="flex flex-col gap-2">
+        <div>
+          <p class="font-body text-[13px] font-medium text-primary">Lun — Vie</p>
+          <p class="font-body text-[13px] text-on-surface-variant">9:00–13:00 · 17:30–21:30</p>
+        </div>
+        <div>
+          <p class="font-body text-[13px] font-medium text-primary">Sábados</p>
+          <p class="font-body text-[13px] text-on-surface-variant">9:30–13:30 · 17:30–21:30</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Copyright -->
+  <div class="border-t border-primary/10 py-6 px-5 md:px-16 text-center">
+    <p class="font-body text-[11px] uppercase tracking-widest" style="color:#262626;">
+      © {year} Apola San Juan · By Pingüina
+    </p>
+  </div>
+
+</footer>

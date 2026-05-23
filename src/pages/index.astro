@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ColeccionSection from '../components/ColeccionSection.astro';
+import SobreNosotrosSection from '../components/SobreNosotrosSection.astro';
+import MarqueeSection from '../components/MarqueeSection.astro';
+import InstagramSection from '../components/InstagramSection.astro';
+import FooterSection from '../components/FooterSection.astro';
+---
+
+<BaseLayout>
+  <Nav />
+  <main>
+    <HeroSection />
+    <SobreNosotrosSection />
+    <MarqueeSection />
+    <ColeccionSection />
+    <InstagramSection />
+  </main>
+  <FooterSection />
+</BaseLayout>
+
+<script>
+  import('../scripts/scroll-animations');
+</script>

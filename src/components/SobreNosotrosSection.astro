@@ -1,0 +1,52 @@
+---
+const whatsappUrl = 'https://wa.me/542644672785';
+---
+
+<section id="sobre-nosotros" class="min-h-[100dvh] md:min-h-[80vh] flex flex-col items-center justify-center px-8 md:px-16 bg-surface-container-low" style="padding-top:7rem; padding-bottom:5rem;">
+
+  <div class="max-w-2xl flex flex-col items-center text-center">
+
+
+    <!-- Título -->
+    <h2 class="font-display text-[clamp(1.8rem,4vw,3rem)] leading-[1.4] text-primary" style="margin-bottom:2rem;">
+      Una marca nacida con<br/>
+      <span class="italic">pasión por la moda femenina</span>
+    </h2>
+
+    <!-- Texto -->
+    <p class="font-body text-[15px] leading-[28px] text-on-surface-variant mb-5">
+      Apola nació en San Juan, Argentina, con la visión de acercar moda de diseño a la mujer actual. Cada prenda que elegimos refleja nuestra búsqueda constante de calidad, elegancia y comodidad.
+    </p>
+    <p class="font-body text-[15px] leading-[28px] text-on-surface-variant mb-14">
+      Hoy contamos con tres locales en San Juan donde te esperamos para que descubras nuestra colección en persona y vivas la experiencia Apola.
+    </p>
+
+    <!-- Pilares -->
+    <div class="flex gap-14 w-full justify-center py-8" style="margin-bottom:1.75rem;">
+      {[
+        { num: '3',     label: 'Locales' },
+        { num: '100%',  label: 'Diseño' },
+        { num: '∞',     label: 'Estilo' },
+      ].map(p => (
+        <div class="flex flex-col items-center gap-1">
+          <span class="font-display text-[28px] italic text-primary">{p.num}</span>
+          <span class="font-body text-[10px] uppercase tracking-[0.18em] text-on-surface-variant opacity-60">{p.label}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      style="display:inline-flex;align-items:center;padding:.875rem 2.25rem;border:1px solid rgba(38,38,38,.3);color:#262626;background:transparent;font-family:'Manrope',system-ui,sans-serif;font-size:.6875rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-radius:.125rem;transition:all .25s ease;"
+      onmouseenter="this.style.background='#D9C5B2';this.style.borderColor='#D9C5B2'"
+      onmouseleave="this.style.background='transparent';this.style.borderColor='rgba(38,38,38,.3)'"
+    >
+      Contactanos
+    </a>
+
+  </div>
+
+</section>

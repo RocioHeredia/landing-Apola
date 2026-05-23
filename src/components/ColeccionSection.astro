@@ -1,0 +1,70 @@
+---
+const base = import.meta.env.BASE_URL;
+const whatsappUrl = 'https://wa.me/542644672785';
+
+const items: { type: 'image' | 'video'; src: string }[] = [
+  { type: 'image', src: `${base}assets/images/cat1.png` },
+  { type: 'image', src: `${base}assets/images/cat2.png` },
+  { type: 'image', src: `${base}assets/images/cat3.png` },
+  { type: 'image', src: `${base}assets/images/cat4.png` },
+  { type: 'image', src: `${base}assets/images/cat5.png` },
+  { type: 'image', src: `${base}assets/images/cat6.png` },
+  { type: 'image', src: `${base}assets/images/cat7.jpg` },
+  { type: 'image', src: `${base}assets/images/cat8.png` },
+  { type: 'image', src: `${base}assets/images/cat9.png` },
+  { type: 'image', src: `${base}assets/images/cat10.png` },
+  { type: 'video', src: `${base}assets/videos/video1.mp4` },
+  { type: 'video', src: `${base}assets/videos/video2.mp4` },
+];
+---
+
+<section id="colecciones" class="min-h-[100dvh] md:min-h-[80vh] flex flex-col items-center px-5 md:px-16" style="padding-top: 5rem; padding-bottom: 3rem;">
+
+  <!-- Encabezado centrado -->
+  <div class="text-center border-b border-primary/10 w-full" style="max-width:1280px; padding-bottom: 1.5rem; margin-bottom: 5rem;">
+    <h2 class="font-display text-[32px] leading-[40px] font-medium text-primary">Catálogo</h2>
+  </div>
+
+  <!-- Grilla -->
+  <div class="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4 w-full" style="max-width:1280px;">
+    {items.map((item, i) => (
+      <article class="group flex flex-col">
+
+        <div class="aspect-[3/4] overflow-hidden bg-surface-container-low" style="margin-bottom: 0.5rem;">
+          {item.type === 'video' ? (
+            <video
+              src={item.src}
+              autoplay
+              muted
+              loop
+              playsinline
+              class="w-full h-full object-cover"
+            />
+          ) : (
+            <img
+              src={item.src}
+              alt="Apola San Juan"
+              loading={i < 3 ? 'eager' : 'lazy'}
+              width="300"
+              height="400"
+              class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            />
+          )}
+        </div>
+
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display:inline-flex;align-items:center;justify-content:center;padding:.5rem .5rem;border:1px solid rgba(38,38,38,.3);color:#262626;background:transparent;font-family:'Manrope',system-ui,sans-serif;font-size:.55rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-radius:.125rem;transition:all .25s ease;"
+          onmouseenter="this.style.background='#D9C5B2';this.style.borderColor='#D9C5B2'"
+          onmouseleave="this.style.background='transparent';this.style.borderColor='rgba(38,38,38,.3)'"
+        >
+          Consultar
+        </a>
+
+      </article>
+    ))}
+  </div>
+
+</section>

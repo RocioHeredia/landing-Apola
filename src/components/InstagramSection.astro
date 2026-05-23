@@ -1,0 +1,53 @@
+---
+const base = import.meta.env.BASE_URL;
+const instagramUrl = 'https://www.instagram.com/apolasanjuan_/';
+
+const fotos = [
+  `${base}assets/images/ig1.png`,
+  `${base}assets/images/ig2.png`,
+  `${base}assets/images/ig3.png`,
+  `${base}assets/images/ig4.png`,
+  `${base}assets/images/ig5.png`,
+  `${base}assets/images/ig6.png`,
+];
+---
+
+<section id="contacto" class="min-h-[100dvh] md:min-h-[80vh] flex flex-col items-center justify-center py-20 md:py-28 px-5 md:px-16">
+
+  <!-- Encabezado -->
+  <div class="text-center w-full max-w-[1280px]" style="margin-bottom:4rem; padding-top:3rem;">
+    <span class="font-body text-[11px] uppercase tracking-[0.25em] text-on-surface-variant block" style="margin-bottom:2rem;">Seguinos</span>
+    <h2 class="font-display text-[32px] leading-[40px] italic text-primary">@apolasanjuan_</h2>
+  </div>
+
+  <!-- Grid de imágenes -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-2 w-full max-w-[1280px]">
+    {fotos.map((src, i) => (
+      <div class="group block aspect-square overflow-hidden bg-surface-container-low">
+        <img
+          src={src}
+          alt="Apola San Juan Instagram"
+          loading="lazy"
+          width="600"
+          height="600"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      </div>
+    ))}
+  </div>
+
+  <!-- CTA -->
+  <div style="margin-top:2rem; margin-bottom:2rem;">
+    <a
+      href={instagramUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      style="display:inline-flex;align-items:center;padding:.875rem 2.25rem;border:1px solid rgba(38,38,38,.3);color:#262626;background:transparent;font-family:'Manrope',system-ui,sans-serif;font-size:.6875rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-radius:.125rem;transition:all .25s ease;"
+      onmouseenter="this.style.background='#D9C5B2';this.style.borderColor='#D9C5B2'"
+      onmouseleave="this.style.background='transparent';this.style.borderColor='rgba(38,38,38,.3)'"
+    >
+      Ver Instagram
+    </a>
+  </div>
+
+</section>

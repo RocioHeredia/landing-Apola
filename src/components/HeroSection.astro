@@ -1,0 +1,35 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="relative w-full h-[100dvh] md:h-[80vh] md:min-h-[600px] flex items-center justify-center overflow-hidden">
+
+  <img
+    src={`${base}assets/images/hero1.png`}
+    alt=""
+    loading="eager"
+    width="1200"
+    height="1200"
+    class="absolute inset-0 w-full h-full object-cover"
+    style="object-position: center center; opacity: 0.55;"
+  />
+
+  <!-- Overlay beige -->
+  <div class="absolute inset-0" style="background: rgba(217,197,178,0.35);"></div>
+
+  <!-- Contenido -->
+  <div class="relative z-10 flex flex-col items-center gap-8 text-center px-5 mt-16 md:mt-56">
+    <h1 class="font-display text-[clamp(2rem,6vw,4rem)] leading-tight tracking-[-0.02em] text-primary">
+      Elegancia y estilo<br/>en San Juan
+    </h1>
+    <a
+      href="#colecciones"
+      style="display:inline-flex;align-items:center;padding:.875rem 2.25rem;border:1px solid rgba(38,38,38,.3);color:#262626;background:transparent;font-family:'Manrope',system-ui,sans-serif;font-size:.6875rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-radius:.125rem;transition:all .25s ease;"
+      onmouseenter="this.style.background='#D9C5B2';this.style.borderColor='#D9C5B2'"
+      onmouseleave="this.style.background='transparent';this.style.borderColor='rgba(38,38,38,.3)'"
+    >
+      Ver Catálogo
+    </a>
+  </div>
+
+</section>
