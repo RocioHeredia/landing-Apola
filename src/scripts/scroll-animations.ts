@@ -1,21 +1,19 @@
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  gsap.registerPlugin(ScrollTrigger);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement;
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+          observer.unobserve(el);
+        }
+      });
+    },
+    { rootMargin: '0px 0px -12% 0px' }
+  );
 
-  gsap.utils.toArray<Element>('.fade-in').forEach((el) => {
-    gsap.to(el, {
-      opacity: 1,
-      y: 0,
-      duration: 0.85,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 88%',
-      },
-    });
-  });
+  document.querySelectorAll<HTMLElement>('.fade-in').forEach((el) => observer.observe(el));
 } else {
   document.querySelectorAll<HTMLElement>('.fade-in').forEach((el) => {
     el.style.opacity = '1';
