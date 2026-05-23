@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output: 'static',
-  base: '/landing-Apola',
+  base: '/landing-Apola/',
   vite: {
     plugins: [tailwindcss()],
   },
